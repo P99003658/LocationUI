@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Connected Boat Simulator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1>DASHBOARD</h1>        
+  <table class="table table-hover">
+    <thead>
+    <style>
+      #map {
+        height: 300px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+       }
+    </style>
+      <tr>
+        <th>HULLID</th>
+        <th>LONGITUDE</th>
+        <th>LATITUDE</th>
+        <th>ALTITUDE</th>
+        <th>HEADING</th>
+        <th>TIMESTAMP</th>
+        <!--<th>STATUS</th>
+        <th>STARTED AT</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="main: ${boatlist}">
+					<td th:text="${main.hullid}">HULL ID</td>
+					<td th:text="${main.longitude}">LONGITUDE</td>
+					<td th:text="${main.latitude}">LATITUDE</td>
+					<td th:text="${main.altitude}">ALTITUDE</td>
+					<td th:text="${main.heading}">HEADING</td>
+					<td th:text="${main.timestamp}">TIMESTAMP</td>
+					<!--<td th:text="${listofexam.pscore}">Passing score</td>
+					<td><a th:href="@{/javadetail}">Exam Details</a></td>
+					<td><a th:href="@{/Updatedetails}">UPDATE DETAILS</a><td>		
+							-->
+					
+				</tr>
+				  </tbody>
+  </table>
+	<div id="map"></div>
+    <script>
+      function initMap() {
+        var test= {lat: 18.1124372, lng: 	79.01929969999999};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: test
+        });
+        var marker = new google.maps.Marker({
+          position: test,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src=
+"https://maps.googleapis.com/maps/api/js?key=AIzaSyB_DanDJ4SjhdeAWb0ZXdsLfLx1N5PCyS0&callback=initMap">
+    </script>
+  
+</div>
+</body>
+</html>
